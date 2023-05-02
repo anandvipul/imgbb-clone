@@ -1,8 +1,11 @@
 import { useMemo, useContext } from "react";
 import { Context } from "../context";
 import Firestore from "../handlers/firestore";
+import { Storage } from "../handlers/storage";
 
 const { writeDoc } = Firestore;
+
+const { uploadFile } = Storage;
 
 const Preview = ({ path }) => {
   return (
@@ -24,13 +27,16 @@ export const UploadForm = () => {
   const { state, dispatch } = useContext(Context);
 
   const { inputs, isCollapsed } = state;
+
   const onSubmit = (e) => {
     e.preventDefault();
+    uploadFile(inputs);
     writeDoc(inputs, "stocks").then(console.log);
     dispatch({ type: "setItem" });
 
     dispatch({ type: "collapse", payload: { bool: false } });
   };
+
   const onChange = (e) => {
     dispatch({ type: "setInputs", payload: { value: e } });
   };
