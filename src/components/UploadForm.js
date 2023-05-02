@@ -1,5 +1,8 @@
 import { useMemo, useContext } from "react";
 import { Context } from "../context";
+import Firestore from "../handlers/firestore";
+
+const { writeDoc } = Firestore;
 
 const Preview = ({ path }) => {
   return (
@@ -23,6 +26,7 @@ export const UploadForm = () => {
   const { inputs, isCollapsed } = state;
   const onSubmit = (e) => {
     e.preventDefault();
+    writeDoc(inputs, "stocks").then(console.log);
     dispatch({ type: "setItem" });
 
     dispatch({ type: "collapse", payload: { bool: false } });
