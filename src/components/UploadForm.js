@@ -30,7 +30,7 @@ export const UploadForm = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    uploadFile(inputs);
+    uploadFile(inputs).then((data) => console.log(data));
     writeDoc(inputs, "stocks").then(console.log);
     dispatch({ type: "setItem" });
 
