@@ -4,10 +4,10 @@ const Card = ({ src }) => {
       <div className="card" style={{ width: "16rem" }}>
         <img src={src} className="card-img-top" alt="dummy" />
         <div className="card-body">
-          <p className="card-text">
+          {/* <p className="card-text">
             Some quick example text to build on the card title and make up the
             bulk of the card's content.
-          </p>
+          </p> */}
         </div>
       </div>
     </div>
